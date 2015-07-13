@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+    <ARDroneLibDir>d:\Parrot\ARDroneLib</ARDroneLibDir>
+    <Win32ClientDir>d:\Parrot\Examples\Win32\sdk_demo\Sources</Win32ClientDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="ARDroneLibDir">
+      <Value>$(ARDroneLibDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Win32ClientDir">
+      <Value>$(Win32ClientDir)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
