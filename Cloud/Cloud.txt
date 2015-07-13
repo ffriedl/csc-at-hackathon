@@ -1,0 +1,11 @@
+Ideen:
+-	Gegenstände in bestimmten Formen und Farben erkennen und optional GPS-Daten speichern
+-	Gesuchte Personen finden (über Gesichts/Bewegungserkennung)
+-	iBeacons legen und die Drone nach dem Muster der iBeacons fliegen lassen
+-	Drone fliegt mit Einsatzfahrzeugen mit um bei Unfällen, auf der Autobahn, KFZ-Kennzeichen von Autofahrern welche die Rettungsgasse missachten, in eine Datenbank zu speichern. 
+-	Bilder mittels ImageJ analysieren um die Anzahl von Menschen zum Beispiel bei Demonstrationen oder anderen Events zu überwachen – zum Beispiel Menschenansammlungen ggf. besser zu verteilen
+
+-	Watson visual recognition: 
+http://www.raymondcamden.com/2015/02/06/using-the-new-bluemix-visual-recognition-service-in-cordova 
+-	Demo of Watson visual recognition: 
+http://visual-recognition-demo.mybluemix.net/ 
