@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from DroneDataServiceService WSDL service -->
+
+  <service name="DroneDataService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://app"/>
+      <parameter name="wsdlServiceElement" value="DroneDataServiceService"/>
+      <parameter name="schemaQualified" value="http://app"/>
+      <parameter name="wsdlServicePort" value="DroneDataService"/>
+      <parameter name="className" value="app.DroneDataService"/>
+      <parameter name="wsdlPortType" value="DroneDataService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://app" name="saveDroneData" qname="operNS:saveDroneData" soapAction="">
+        <parameter xmlns:pns="http://app" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:height" type="tns:double"/>
+        <parameter xmlns:pns="http://app" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:x" type="tns:double"/>
+        <parameter xmlns:pns="http://app" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:y" type="tns:double"/>
+        <parameter xmlns:pns="http://app" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:image" type="tns:base64Binary"/>
+      </operation>
+      <parameter name="allowedMethods" value="saveDroneData"/>
+
+  </service>
+</deployment>

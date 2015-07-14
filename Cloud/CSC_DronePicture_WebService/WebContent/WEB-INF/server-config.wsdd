@@ -1,0 +1,58 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="not_set"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="DroneDataService" provider="java:RPC" style="wrapped" use="literal">
+ <ns1:operation xmlns:operNS="http://app" name="saveDroneData" qname="operNS:saveDroneData" soapAction="">
+        <ns1:parameter xmlns:pns="http://app" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:height" type="tns:double"/>
+        <ns1:parameter xmlns:pns="http://app" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:x" type="tns:double"/>
+        <ns1:parameter xmlns:pns="http://app" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:y" type="tns:double"/>
+        <ns1:parameter xmlns:pns="http://app" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:image" type="tns:base64Binary"/>
+  </ns1:operation> 
+  <ns1:parameter name="allowedMethods" value="saveDroneData"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="DroneDataService"/>
+  <ns1:parameter name="className" value="app.DroneDataService"/>
+  <ns1:parameter name="wsdlServicePort" value="DroneDataService"/>
+  <ns1:parameter name="schemaQualified" value="http://app"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://app"/>
+  <ns1:parameter name="wsdlServiceElement" value="DroneDataService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>
